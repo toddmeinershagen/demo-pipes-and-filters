@@ -12,9 +12,9 @@ namespace Demo.PayrollCalculation.Tests.TaxesPipeline
     [TestFixture]
     public class CalculateMedicateTaxTests
     { 
-        [TestCase(.1, .01, 100, 90, 5, 9.5, Description = "Under threshold")]
-        [TestCase(.1, .01, 100, 95, 5, 10, Description = "At threshold")]
-        [TestCase(.1, .01, 100, 100, 15, 11.65, Description = "Above threshold")]
+        [TestCase(.1, .01, 100, 90, 5, .5, Description = "Under threshold")]
+        [TestCase(.1, .01, 100, 95, 5, .5, Description = "At threshold")]
+        [TestCase(.1, .01, 100, 100, 15, 1.65, Description = "Above threshold")]
         public async Task given_medicaretaxinfo_and_earnings_when_calculating_then_should_return_expected_medicare(
             decimal rate1, decimal rate2, decimal threshold, decimal ytdEarnings, decimal payrunEarnings, decimal expected)
         {

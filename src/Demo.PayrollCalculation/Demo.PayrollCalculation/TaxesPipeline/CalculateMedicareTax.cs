@@ -17,12 +17,12 @@ namespace Demo.PayrollCalculation.TaxesPipeline
         {
             var info = await _repository.GetMedicareTaxInfo();
             var ytdPlusCheck = input.Earnings.YTD + input.Earnings.Total;
-            var tax = ytdPlusCheck * info.Rate1;
+            var tax = input.Earnings.Total * info.Rate1;
 
             var additionalAmount = ytdPlusCheck - info.Rate2Threshold;
             if (additionalAmount > 0)
             {
-                tax += additionalAmount * info.Rate2;
+                tax += input.Earnings.Total * info.Rate2;
             }
 
             input.Taxes.Add(new Tax { Type = TaxType.Medicare, Value = tax });
