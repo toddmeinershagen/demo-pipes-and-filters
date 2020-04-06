@@ -9,7 +9,7 @@ namespace Demo.PayrollCalculation.EarningsPipeline
         public CalculateEarnings(IServiceProvider provider)
             : base(provider)
         {
-            //add filters
+            this.Add<CalculateRemainingEarningsAsMonolith>();
         }
     }
 }

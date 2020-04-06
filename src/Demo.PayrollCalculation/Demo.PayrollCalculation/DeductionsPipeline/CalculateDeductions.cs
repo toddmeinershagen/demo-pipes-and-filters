@@ -1,6 +1,4 @@
 ﻿using Patterns.PipesAndFilters;
-using System.Threading;
-using System.Threading.Tasks;
 
 namespace Demo.PayrollCalculation.DeductionsPipeline
 {
@@ -9,7 +7,7 @@ namespace Demo.PayrollCalculation.DeductionsPipeline
         public CalculateDeductions(IServiceProvider provider)
             : base(provider)
         {
-            //add filters
+            this.Add<CalculateRemainingDeductionsAsMonolith>();
         }
     }
 }

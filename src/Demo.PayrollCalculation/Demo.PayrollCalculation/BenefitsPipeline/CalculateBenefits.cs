@@ -1,6 +1,4 @@
 ﻿using Patterns.PipesAndFilters;
-using System.Threading;
-using System.Threading.Tasks;
 
 namespace Demo.PayrollCalculation.BenefitsPipeline
 {
@@ -8,7 +6,7 @@ namespace Demo.PayrollCalculation.BenefitsPipeline
     {
         public CalculateBenefits(IServiceProvider provider)
         {
-            //add filters
+            this.Add<CalculateRemainingBenefitsAsMonolith>();
         }
     }
 }

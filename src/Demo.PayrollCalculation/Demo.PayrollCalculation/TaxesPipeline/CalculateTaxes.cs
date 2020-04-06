@@ -10,7 +10,8 @@ namespace Demo.PayrollCalculation.TaxesPipeline
             : base(provider)
         {
             this
-                .Add<CalculateMedicareTax>();
+                .Add<CalculateMedicareTax>()
+                .Add<CalculateRemainingTaxesAsMonolith>();
         }
     }
 }
