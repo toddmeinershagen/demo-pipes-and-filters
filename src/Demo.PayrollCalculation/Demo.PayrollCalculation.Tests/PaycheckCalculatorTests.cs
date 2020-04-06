@@ -20,15 +20,12 @@ namespace Demo.PayrollCalculation.Tests
                 .AddClasses()
                 .AsImplementedInterfaces()
                 .WithTransientLifetime());
-
-            //services.Scan(x => x.FromExecutingAssembly());
             services.AddSingleton<IServiceProvider>(x => new MicrosoftServiceProvider(services.BuildServiceProvider()));
             var provider = services.BuildServiceProvider();
 
             var context = new PaycheckContext();
             var calculator = provider.GetService<PaycheckCalculator>();
-
-            var result = await calculator.Calculate(context);
+            var result = await calculator.ExecuteAsync(context);
 
             result.Should().BeEquivalentTo(context);
         }

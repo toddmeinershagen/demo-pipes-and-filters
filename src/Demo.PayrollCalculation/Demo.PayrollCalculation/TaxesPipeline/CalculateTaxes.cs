@@ -4,20 +4,13 @@ using System.Threading.Tasks;
 
 namespace Demo.PayrollCalculation.TaxesPipeline
 {
-    public class CalculateTaxes : AsyncFilterBase<PaycheckContext>
+    public class CalculateTaxes : Pipeline<PaycheckContext>
     {
-        private readonly IServiceProvider _provider;
-
         public CalculateTaxes(IServiceProvider provider)
+            : base(provider)
         {
-            _provider = provider;
-        }
-
-        protected override async Task<PaycheckContext> OnExecuteAsync(PaycheckContext input, CancellationToken cancellationToken)
-        {
-            var taxCalculator = new Pipeline<PaycheckContext>(_provider)
+            this
                 .Add<CalculateMedicareTax>();
-            return await taxCalculator.ExecuteAsync(input);
         }
     }
 }

@@ -4,11 +4,12 @@ using System.Threading.Tasks;
 
 namespace Demo.PayrollCalculation.DeductionsPipeline
 {
-    public class CalculateDeductions : AsyncFilterBase<PaycheckContext>
+    public class CalculateDeductions : Pipeline<PaycheckContext>
     {
-        protected override async Task<PaycheckContext> OnExecuteAsync(PaycheckContext input, CancellationToken cancellationToken)
+        public CalculateDeductions(IServiceProvider provider)
+            : base(provider)
         {
-            return await Task.FromResult(input);
+            //add filters
         }
     }
 }
